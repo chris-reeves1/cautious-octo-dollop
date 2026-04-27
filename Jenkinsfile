@@ -18,7 +18,7 @@ pipeline{
         }
         stage("add a file"){
             steps{
-                catchError(buildResult: "UNSTABLE", stageResult: "UNSTABLE")
+                // catchError(buildResult: "UNSTABLE", stageResult: "UNSTABLE")
                 sh "touch jenkins-test/file1.txt"
             }
         }
