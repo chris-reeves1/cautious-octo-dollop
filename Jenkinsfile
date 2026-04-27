@@ -10,7 +10,7 @@ pipeline{
     stages{
         stage("make a directory"){
             options{
-                retries(2)
+                retry(2)
             }
             steps{
                 sh "mkdir jenkins-test"
