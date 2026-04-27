@@ -13,11 +13,12 @@ pipeline{
                 retry(2)
             }
             steps{
-                sh "mkdir jenkins-test"
+                sh "mkdir jenkins-test || true"
             }
         }
         stage("add a file"){
             steps{
+                catchError(buildResult: "UNSTABLE", stageResult: "UNSTABLE")
                 sh "touch jenkins-test/file1.txt"
             }
         }
