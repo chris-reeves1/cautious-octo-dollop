@@ -169,18 +169,19 @@ pipeline {
         stage('Smoke Test') {
             steps {
                 sh '''
-                    for i in {1..10}; do
+                    for i in 1 2 3 4 5 6 7 8 9 10; do
+                        echo "Smoke test attempt $i..."
                         if curl -f http://localhost/health; then
                             echo "Smoke test passed"
                             exit 0
                         fi
-
-                        echo "Application not ready yet..."
                         sleep 3
                     done
 
                     echo "Smoke test failed"
+                    echo "---- Flask logs ----"
                     docker logs flask-app || true
+                    echo "---- Nginx logs ----"
                     docker logs mynginx || true
                     exit 1
                 '''
