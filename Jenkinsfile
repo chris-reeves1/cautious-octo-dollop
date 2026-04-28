@@ -96,9 +96,9 @@ pipeline {
         stage('Record Image Metadata') {
             steps {
                 sh '''
-                    docker image inspect flask-app:${FINAL_IMAGE} > image-metadata.json
-                    docker image ls flask-app:${FINAL_IMAGE} > image-size.txt
-                    docker history flask-app:${FINAL_IMAGE} > image-history.txt
+                    docker image inspect ${FINAL_IMAGE} > image-metadata.json
+                    docker image ls ${FINAL_IMAGE} > image-size.txt
+                    docker history ${FINAL_IMAGE} > image-history.txt
                 '''
             }
             post {
