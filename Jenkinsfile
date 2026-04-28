@@ -48,7 +48,7 @@ pipeline {
                             python3 -m venv .venv
                             . .venv/bin/activate
                             pip install -r requirements.txt
-                            python3 -m unittest discover -s tests .
+                            python3 -m unittest discover -s tests
                             deactivate
                         '''
                     }
@@ -112,7 +112,7 @@ pipeline {
             steps {
                 script {
                     def sizeBytes = sh(
-                        script: "docker image inspect flask-app:${FINAL_IMAGE} --format='{{.Size}}'",
+                        script: "docker image inspect ${FINAL_IMAGE} --format='{{.Size}}'",
                         returnStdout: true
                     ).trim().toLong()
 
