@@ -1,5 +1,2 @@
 #!/bin/sh
-exec gunicorn \
-  --bind 0.0.0.0:5500 \
-  --worker-tmp-dir /tmp \
-  app:app
+exec python -m gunicorn -b 0.0.0.0:5500 app:app
